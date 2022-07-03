@@ -4,11 +4,11 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Stack, useDisclosure
+  Stack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import colors from "../../theme/colors";
-
 
 const Search = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -26,11 +26,16 @@ const Search = () => {
             as={motion.input}
             animate={{
               width: isOpen ? "0px" : "100%",
-              border: isOpen ? "none" : `1px solid ${bgColor}`,
-              borderRadius: isOpen ? "50%" : "full",
-              opacity: isOpen ? 0 : 1,
+              // border: isOpen ? "none" : `1px solid ${bgColor}`,
+              // borderRadius: isOpen ? "50%" : "full",
+              // opacity: isOpen ? 0 : 1,
             }}
-            transition="1s ease-out"
+            // @ts-ignore
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+              repeat: "none",
+            }}
             aria-label="search"
             borderRadius="full"
             initial={false}
@@ -39,9 +44,6 @@ const Search = () => {
             children={
               <IconButton
                 as={motion.button}
-                animate={{
-                  background: isOpen ? "transparent" : "alphaWhite.300",
-                }}
                 onClick={onToggle}
                 aria-label="search"
                 borderRadius="full"
